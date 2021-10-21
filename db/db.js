@@ -16,7 +16,7 @@ let conexion;
 const conexionBd = (callback)=>{
     client.connect((err, db)=>{
         if(err){
-            console.error("Error while connecting with DB");
+            console.error("Error en la conexion a la BD");
             return 'error';
         }
 
