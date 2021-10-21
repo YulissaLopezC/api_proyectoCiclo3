@@ -21,7 +21,7 @@ const editSales = async (salesid, data, callback)=>{
     }
 
     const basedatos = getDB();
-    await basedatos.collection('sales').findOneAndUpdate(filtroSale, operacionAtom, {upsert: true, returnOrigin: true}, callback);
+    await basedatos.collection('sales').findOneAndUpdate(filtroSale, operacionAtom, {upsert: true, returnOriginal: true}, callback);
 
 }
 

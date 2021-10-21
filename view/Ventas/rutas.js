@@ -1,5 +1,5 @@
 import Express from 'express';
-import { createSales, getAllSales } from '../../Controller/Ventas/ventasController.js';
+import { createSales, deleteSales, editSales, getAllSales } from '../../Controller/Ventas/ventasController.js';
 import rutasProduct from '../Producto/rutas.js';
 
 const rutaSales = Express.Router();
@@ -20,5 +20,12 @@ rutasProduct.route('/sales').post((req, res)=>{
     createSales(req.body, genericCallback(res));
 })
 
+rutasProduct.route('/sales/:id').patch((req, res)=>{
+    editSales(req.params.id, req.body, genericCallback(res));
+})
+
+rutasProduct.route('/sales/:id').delete((req, res)=>{
+    deleteSales(req.params.id, genericCallback(res));
+})
 
 export default rutaSales;
