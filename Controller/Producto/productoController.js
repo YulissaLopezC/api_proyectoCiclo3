@@ -24,4 +24,11 @@ const editProduct = async(productid, data, callback)=>{
     await basedatos.collection('products').findOneAndUpdate(filtroProduct, operacionAtom, {upsert: true, returnOriginal: true}, callback);
 
 }
-export {getAllProducts, createProduct, editProduct}
+
+const deleteProduct = async(productid, callback)=>{
+    const filtroProduct = {_id: new ObjectId(productid)};
+    const baseDatos = getDB();
+    await baseDatos.collection('products').deleteOne(filtroProduct, callback);
+
+}
+export {getAllProducts, createProduct, editProduct, deleteProduct}
