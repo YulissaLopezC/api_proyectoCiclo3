@@ -1,5 +1,5 @@
 import Express from "express";
-import { getAllProducts, createProduct } from "../../Controller/Producto/productoController.js";
+import { getAllProducts, createProduct, editProduct } from "../../Controller/Producto/productoController.js";
 
 const rutasProduct = Express.Router();
 
@@ -20,6 +20,11 @@ rutasProduct.route('/product').get((req, res)=>{
 
 rutasProduct.route('/product').post((req, res)=>{
     createProduct(req.body, genericCallback(res));
+})
+
+rutasProduct.route('/product/:id').patch((req, res)=>{
+    editProduct(req.params.id, req.body, genericCallback(res));
+
 })
 
 export default rutasProduct;
