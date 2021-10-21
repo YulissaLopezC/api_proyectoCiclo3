@@ -8,4 +8,9 @@ const getAllSales = async (callback) =>{
     .toArray(callback);
 }
 
-export {getAllSales}
+const createSales = async (salesData,callback)=>{
+    const basedatos = getDB();
+    await basedatos.collection('sales').insertOne(salesData, callback);
+}
+
+export {getAllSales, createSales}

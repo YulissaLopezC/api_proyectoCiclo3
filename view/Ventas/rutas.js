@@ -1,5 +1,6 @@
 import Express from 'express';
-import { getAllSales } from '../../Controller/Ventas/ventasController.js';
+import { createSales, getAllSales } from '../../Controller/Ventas/ventasController.js';
+import rutasProduct from '../Producto/rutas.js';
 
 const rutaSales = Express.Router();
 
@@ -14,5 +15,10 @@ const genericCallback = (res) => (err, result) =>{
 rutaSales.route('/sales').get((req, res)=>{
     getAllSales(genericCallback(res));
 })
+
+rutasProduct.route('/sales').post((req, res)=>{
+    createSales(req.body, genericCallback(res));
+})
+
 
 export default rutaSales;
